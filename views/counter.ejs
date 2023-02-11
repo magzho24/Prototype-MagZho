@@ -18,7 +18,7 @@
     <div class="container">
         <div class="section">
             <h2>Counter Tracker</h2>
-            <a class="btn-flat btn-large" href="index">
+            <a class="btn-flat btn-large" href="/">
                 <i class="material-icons">arrow_back</i>
             </a>
 
@@ -31,58 +31,21 @@
                 </thead>
 
                 <tbody>
+                    <% for (let i = 0; i < inventory.length; i++) { %>
                     <tr>
-                        <td>Toe Counter</td>
-                        <td>10</td>
+                        <td><%= inventory[i].item %></td>
+                        <td><%= inventory[i].quantity %></td>
                         <td>
-                            <a class="waves-effect waves-light btn-flat" href="counter\edit">
+                            <a class="waves-effect waves-light btn-flat" href=<%= "/counter/edit/" + inventory[i].id %>>
                                 <i class="material-icons right">edit</i>
-                                Edit
+                            </a>
+                            <a class="waves-effect waves-light btn-flat" href="/counter/edit/<%= inventory[i].id %>/delete">
+                                <i class="material-icons">delete</i>
                             </a>
                         </td>
                     
-                        <td>
-                            <a class="waves-effect waves-light btn-flat">
-                            <i class="material-icons">delete</i>
-                            </a>
-                        </td>
                     </tr>
-
-                    <tr>
-                        <td>Planet Counter</td>
-                        <td>8</td>
-                        <td>
-                            <a class="waves-effect waves-light btn-flat" href="counter\edit">
-                                <i class="material-icons right">edit</i>
-                                Edit
-                            </a>
-                        </td>
-                    
-                        <td>
-                            <a class="waves-effect waves-light btn-flat">
-                            <i class="material-icons">delete</i>
-                            </a>
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Ball Counter</td>
-                        <td>6</td>
-                        <td>
-                            <a class="waves-effect waves-light btn-flat" href="counter\edit">
-                                <i class="material-icons right">edit</i>
-                                Edit
-                            </a>
-                        </td>
-                    
-                        <td>
-                            <a class="waves-effect waves-light btn-flat">
-                            <i class="material-icons">delete</i>
-                            </a>
-                        </td>
-                    </tr>
-
+                    <% } %>
                     
                 </tbody>    
 
@@ -92,21 +55,21 @@
             <div class="section">
                 <h2>Add a Counter</h2>
                 <div id="adder">
-                    <form>
+                    <form method = "post" action="/counter"> 
                         <div class="row">
                             <div class="input-field col s6">
-                                <input placeholder="Counter Name" id="counter_name" type="text" class="validate">
+                                <input type="text" placeholder="Counter Name" name="name" id="nameInput" class="validate" data-length="32" required>
                                     
                             </div>
                             <div class="input-field col s6">
-                                <input placeholder="Quantitiy" id="quantity" type="number" class="validate">
+                                <input type="number" placeholder="Quantity" name="quantity" id="quantityInput" required>
                             </div>
 
                         </div>
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="Description" id="description" type="text" class="validate">
+                                <input type="text" placeholder="Description" name="description" id="descriptionInput" data-length="100">
                             </div>
 
                         </div>

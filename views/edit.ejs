@@ -31,22 +31,22 @@
             
             <h2>Details</h2>
             
-            <a class="btn-flat btn-large" href="../counter">
+            <a class="btn-flat btn-large" href="/counter">
                 <i class="material-icons">arrow_back</i>
             </a>
     
             <table class="striped">
                 <tr>
                     <th>Item:</th>
-                    <td>Toes</td>
+                    <td><%= item %></td>
                 </tr>
                 <tr>
                     <th>Quantity:</th>
-                    <td>10</td>
+                    <td><%= quantity %></td>
                 </tr>
                 <tr>
                     <th>Description</th>
-                    <td>This is for you to count how many toes you have.</td>
+                    <td><%= description %></td>
                 </tr>
 
             </table>
@@ -58,7 +58,7 @@
                 Edit
             </a>
 
-            <a class="waves-effect waves-light btn red" id="deleter">
+            <a class="waves-effect waves-light btn red" id="deleter" href="/counter/edit/<%=id%>/delete">
                 <i class="material-icons right">delete</i>
                 Delete
             </a>
@@ -68,21 +68,21 @@
             
             <div class="modal-content">
                 <h3>Edit Item:</h3>
-                <form>
+                <form method="post">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input placeholder="Counter Name" id="counter_name" type="text" class="validate">
+                            <input type="text" name="name" id="nameInput" class="validate" data-length="32" value="<%= item%>" required>
                                 
                         </div>
                         <div class="input-field col s6">
-                            <input placeholder="Quantitiy" id="quantity" type="number" class="validate">
+                            <input type="number" name="quantity" id="quantityInput" value=<%=quantity%> required>
                         </div>
 
                     </div>
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input placeholder="Description" id="description" type="text" class="validate">
+                            <input type="text" name="description" id="descriptionInput" data-length="100" value="<%= description%>">
                         </div>
 
                     </div>
