@@ -13,6 +13,36 @@
    
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="nav-wrapper brown">
+                <div class="container">
+                    <a href="/" class="brand-logo">Counter</a>
+                    <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <!-- Main nav, hidden for small screens -->
+                    <ul id="desktop-nav" class="right hide-on-med-and-down">
+                        <li><a href="/"><i class="material-icons left">home</i>Home</a></li>
+                        <li><a href="/counter"><i class="material-icons left">list</i>Inventory</a></li>
+                        <% if (isLoggedIn) { %>
+                            <li><a href="/profile"><i class="material-icons left">person</i> Hello, <%=user.name%></a> </li>
+                            <li><a href="/logout" class="btn red">Logout</a></li>
+                        <% } else { %>
+                            <li><a href="/login" class="btn blue">Login</a></li>
+                        <% } %>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Mobile nav menu, shown when menu button clicked -->
+        <ul id="mobile-nav" class="sidenav">
+            <li><a href="/"><i class="material-icons left">home</i>Home</a></li>
+            <li><a href="/counter"><i class="material-icons left">list</i>Inventory</a></li>
+            <li><a href="/login" class="btn blue">Login</a></li>
+            <li><a href="/logout" class="btn red">Logout</a></li>
+        </ul>
+    </header>
+
     <div class="center-align">
         <div class="section">  
             <h1>Hi!</h1>
@@ -31,6 +61,6 @@
     
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script> M.AutoInit();</script>
+    <script src="/scripts/autoinit.js"></script>
 </body>
 </html>
